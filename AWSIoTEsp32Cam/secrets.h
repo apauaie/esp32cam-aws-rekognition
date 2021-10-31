@@ -20,8 +20,10 @@
 
 const char* ssid  = "YOUR_WIFI_SSID";
 const char* password = "YOUR_WIFI_PASSWORD";
-const char AWS_IOT_ENDPOINT[] = "YOUR_ENDPOINT_HERE";
-const char* aws_iot_endpoint="YOUR_ENDPOINT_HERE";
+const char AWS_IOT_ENDPOINT[] = "YOUR_AWS_ENDPOINT_HERE_EG-xxx.iot.us-east-2.amazonaws.com";
+String AWS_API_ENDPOINT = "YOUR_AWS_ENDPOINT_HERE_EG-https://xxx.execute-api.us-east-2.amazonaws.com/prod";
+
+
 // Amazon Root CA 1
 static const char AWS_CERT_CA[] PROGMEM = R"EOF(
 -----BEGIN CERTIFICATE-----
