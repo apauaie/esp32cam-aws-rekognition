@@ -14,7 +14,6 @@
 
 // The MQTT topics that this device should publish/subscribe
 
-
 #define AWS_IOT_PUBLISH_DATA_TOPIC   "esp32/pub/recognize"
 #define AWS_IOT_SUBSCRIBE_DATA_TOPIC "esp32/sub/recognize"
 
@@ -225,6 +224,16 @@ esp_err_t _http_event_handler(esp_http_client_event_t *evt)
       break;
     case HTTP_EVENT_DISCONNECTED:
       Serial.println("HTTP_EVENT_DISCONNECTED");
+         if (filename!=""){
+        publishMessageDATA("images/Recognition/"+filename + ".jpg");
+        int x=10000;
+        while (x>0){
+        client1.loop();
+        x--;
+      }
+    
+  
+  }
       break;
   }
   return ESP_OK;
@@ -257,11 +266,7 @@ static esp_err_t take_send_photo()
  Serial.println(length);
  int err1 = mbedtls_base64_encode(image, image_buf_size, &olen, fb->buf, length);
 
- // const char* imageChar = (char*) image;
-//  
- // int str_len = imageChar.length() + 1;
-//  char image_char[str_len];
-//  image.toCharArray(image_char, str_len);
+
 
   esp_http_client_handle_t http_client;
   
@@ -274,8 +279,7 @@ static esp_err_t take_send_photo()
    filename =  String(timeClient.getEpochTime());
    Serial.print("Filename:" );  Serial.print(filename+".jpg \n");
    String folder = "Recognition";
-
-   String post_url2 = AWS_IOT_ENDPOINT + folder + "/" + filename; // Location where images are POSTED
+   String post_url2 = AWS_API_ENDPOINT + "/" + folder + "/" + filename; // Location where images are POSTED
    char post_url3[post_url2.length() + 1];
    post_url2.toCharArray(post_url3, sizeof(post_url3));
   
@@ -315,15 +319,6 @@ void loop()
     take_send_photo();
     
   } 
-  if (filename!=""){
-  publishMessageDATA("images/Recognition/"+filename + ".jpg");
-  int x=3333;
-  while (x>0){
-  client1.loop();
-  x--;
-      }
-    
   
-  }
   
 }
