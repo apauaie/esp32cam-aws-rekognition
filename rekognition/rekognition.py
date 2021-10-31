@@ -68,24 +68,24 @@ def lambda_handler(event, context):
 		if (float(label['Confidence']) > 90):
 				results += (label['Name'] + ';')
 	
-	for facedetail in detect_faces(bucket_name, file_name):
-		if (float(facedetail['Confidence']) > 30):
-			results += (str(facedetail['Gender']['Value']) + ';')
+# 	for facedetail in detect_faces(bucket_name, file_name):
+# 		if (float(facedetail['Confidence']) > 30):
+# 			results += (str(facedetail['Gender']['Value']) + ';')
 
-	for text in detect_text(file_name, bucket_name):
-		print ('Detected text:' + text['DetectedText'])
-		# print ('Confidence: ' + "{:.2f}".format(text['Confidence']) + "%")
-		# print ('Id: {}'.format(text['Id']))
-		# if 'ParentId' in text:
-		#     print ('Parent Id: {}'.format(text['ParentId']))
-		# print ('Type:' + text['Type'])
-		# print()
-		if (float(text['Confidence']) > 90):
-			results += (text['DetectedText']+';')
+# 	for text in detect_text(file_name, bucket_name):
+# 		print ('Detected text:' + text['DetectedText'])
+# 		# print ('Confidence: ' + "{:.2f}".format(text['Confidence']) + "%")
+# 		# print ('Id: {}'.format(text['Id']))
+# 		# if 'ParentId' in text:
+# 		#     print ('Parent Id: {}'.format(text['ParentId']))
+# 		# print ('Type:' + text['Type'])
+# 		# print()
+# 		if (float(text['Confidence']) > 90):
+# 			results += (text['DetectedText']+';')
 	
-	for faces in compare_faces(file_name, bucket_name):
-		if (float(faces['Similarity']) > 90):
-			results += (str(faces['Face']['Confidence'])+';')
+# 	for faces in compare_faces(file_name, bucket_name):
+# 		if (float(faces['Similarity']) > 90):
+# 			results += (str(faces['Face']['Confidence'])+';')
 			
 	
 	response = mqtt.publish(
