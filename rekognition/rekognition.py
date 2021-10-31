@@ -41,7 +41,7 @@ def detect_faces(bucket,key, region="us-east-2"):
 			)
 		return response['FaceDetails']
 		
-def detect_labels(bucket, key, max_labels=10, min_confidence=90, region="us-east-2"):
+def detect_labels(bucket, key, max_labels=10, min_confidence=90, region="{{YOUR_REGION}}"):
 		rekognition = boto3.client("rekognition", region)
 		response = rekognition.detect_labels(
 			   Image={"S3Object": {
@@ -58,9 +58,9 @@ def detect_labels(bucket, key, max_labels=10, min_confidence=90, region="us-east
 
 def lambda_handler(event, context):
 	results = ''
-	mqtt = boto3.client('iot-data', region_name='us-east-2')
+	mqtt = boto3.client('iot-data', region_name='{{YOUR_REGION}}')
 
-	bucket_name = 'esp32cam-121525850774'
+	bucket_name = '{{YOUR_BUCKET_NAME}}'
 	file_name = str(event['payload'])
 
 
