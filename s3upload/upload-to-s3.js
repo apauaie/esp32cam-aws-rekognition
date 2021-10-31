@@ -10,7 +10,7 @@ exports.handler = (event, context, callback) => {
   var filePath = "images/" + Folder + "/" + Filename + ".jpg";
   var params = {
     Body: decodedImage,
-    Bucket: "esp32cam-121525850774",
+    Bucket: "{{YOUR_BUCKET_NAME}}",
     Key: filePath,
   };
   s3.upload(params, function (err, data) {
