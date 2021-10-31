@@ -275,7 +275,7 @@ static esp_err_t take_send_photo()
    Serial.print("Filename:" );  Serial.print(filename+".jpg \n");
    String folder = "Recognition";
 
-   String post_url2 = "https://e7qdllcb09.execute-api.us-east-2.amazonaws.com/prod/" + folder + "/" + filename; // Location where images are POSTED
+   String post_url2 = AWS_IOT_ENDPOINT + folder + "/" + filename; // Location where images are POSTED
    char post_url3[post_url2.length() + 1];
    post_url2.toCharArray(post_url3, sizeof(post_url3));
   
