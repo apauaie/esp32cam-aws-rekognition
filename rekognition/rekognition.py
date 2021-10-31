@@ -89,7 +89,7 @@ def lambda_handler(event, context):
 			
 	
 	response = mqtt.publish(
-			topic='esp32/sub/dataiot',
+			topic='esp32/sub/recognize',
 			qos=0,
 			payload=results
 		)
