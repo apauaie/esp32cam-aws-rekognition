@@ -14,8 +14,9 @@
 
 // The MQTT topics that this device should publish/subscribe
 
-#define AWS_IOT_PUBLISH_DATA_TOPIC   "esp32/pub/dataiot"
-#define AWS_IOT_SUBSCRIBE_DATA_TOPIC "esp32/sub/dataiot"
+
+#define AWS_IOT_PUBLISH_DATA_TOPIC   "esp32/pub/recognize"
+#define AWS_IOT_SUBSCRIBE_DATA_TOPIC "esp32/sub/recognize"
 
 
 #define LED 33   //built in LED of AI Thinker ESP32 CAM
